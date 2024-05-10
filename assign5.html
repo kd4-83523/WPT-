@@ -1,0 +1,38 @@
+
+<html>
+  <head>
+    <title>panda running</title>
+  </head>
+  <body>
+   
+    <div style="height:150; width: 150" id="mydiv">
+      <img src="demo.gif" style="height: 150px; width: 200px" />
+    </div>
+    <input type="button" value="Run guys" onclick="Start()" />
+    <input type="button" value="Stop running" onclick="Stop()" />
+
+
+    <script>
+      var counter = 0;
+      var queueNoArray = new Array();
+
+      var refTomydiv = document.getElementById("mydiv");
+      function Start() {
+        var queueNo = window.setInterval(KeepCounting, 100);
+        console.log("Q Created with No " + queueNo);
+        queueNoArray.push(queueNo);
+      }
+
+      function Stop() {
+        var queueNo = queueNoArray.pop();
+        window.clearInterval(queueNo);
+        console.log("Q Destroyed with No " + queueNo);
+      }
+      function KeepCounting() {
+        counter = counter + 1;
+        
+        refTomydiv.style.marginLeft = counter + "px";
+      }
+    </script>
+  </body>
+</html>
